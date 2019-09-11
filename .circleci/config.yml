@@ -32,16 +32,6 @@ jobs:
             - node_modules
           <<: *cache_key_node_modules
 
-  lint:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          <<: *cache_key_node_modules
-      - *npm_install_if_necessary
-      - run:
-          name: Linter
-          command: npm run lint
   test:
     <<: *defaults
     steps:
@@ -50,8 +40,18 @@ jobs:
           <<: *cache_key_node_modules
       - *npm_install_if_necessary
       - run:
-          name: Unit tests
+          name: Unit tests (ganache server)
           command: npm run test
+  test_inprocess:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache_key_node_modules
+      - *npm_install_if_necessary
+      - run:
+          name: Unit tests (ganache in-process provider)
+          command: npx truffle test --network ganache
   coverage:
     <<: *defaults
     steps:
@@ -60,20 +60,18 @@ jobs:
           <<: *cache_key_node_modules
       - *npm_install_if_necessary
       - run:
-          name: Unit tests with coverage report
-          command: npm run coverage
-
-      # TODO(xinbenlv, #1839): run SOLC_NIGHTLY to be run but allow it to fail.
+          name: Coverage (ganache in-process provider)
+          command: npx truffle run coverage
 
 workflows:
   version: 2
   everything:
     jobs:
       - dependencies
-      - lint:
+      - test:
           requires:
             - dependencies
-      - test:
+      - test_inprocess:
           requires:
             - dependencies
       - coverage:
