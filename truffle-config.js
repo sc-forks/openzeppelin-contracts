@@ -1,8 +1,12 @@
 require('chai/register-should');
+
 const ganache = require('ganache-cli');
+const memdown = require("memdown");
+
 const { GSNDevProvider } = require('@openzeppelin/gsn-provider');
 
 const opts = {
+  db: memdown(),
   accounts: [
     {
       balance: 0xD3C21BCECCEDA1000000,
