@@ -1,8 +1,11 @@
+const ganache = require('ganache-cli');
+
 module.exports = {
   skipFiles: [
     'lifecycle/Migrations.sol',
     'mocks'
   ],
+  client: ganache,
   providerOptions: {
     accounts: [
       {
