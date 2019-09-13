@@ -105,9 +105,6 @@ module.exports = {
     }
   },
   plugins: ["solidity-coverage"],
-  mocha: {
-    reporter: "min"
-  },
 
   compilers: {
     solc: useSolcNightly ? solcNightly : solcStable,
