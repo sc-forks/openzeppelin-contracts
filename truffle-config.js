@@ -6,6 +6,7 @@ const memdown = require("memdown");
 const { GSNDevProvider } = require('@openzeppelin/gsn-provider');
 
 const opts = {
+  db: memdown(),
   accounts: [
     {
       balance: 0xD3C21BCECCEDA1000000,
