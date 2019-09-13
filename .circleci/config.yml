@@ -56,12 +56,9 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run:
-          name: Uncache
-          command: rm -rf node_modules
-      - run:
-          name: Install
-          command: npm install
+      - restore_cache:
+          <<: *cache_key_node_modules
+      - *npm_install_if_necessary
       - run:
           name: Coverage (ganache in-process provider)
           command: npx truffle run coverage
