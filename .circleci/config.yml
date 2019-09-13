@@ -51,7 +51,7 @@ jobs:
       - *npm_install_if_necessary
       - run:
           name: Unit tests (ganache in-process provider)
-          command: npx truffle test --network ganache
+          command: node --max-old-space-size=4096 ./node_modules/.bin/truffle test --network ganache
   coverage:
     <<: *defaults
     steps:
@@ -61,7 +61,7 @@ jobs:
       - *npm_install_if_necessary
       - run:
           name: Coverage (ganache in-process provider)
-          command: npx truffle run coverage
+          command: node --max-old-space-size=4096 ./node_modules/.bin/truffle run coverage
 
 workflows:
   version: 2
