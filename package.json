@@ -65,7 +65,7 @@
     "nodemon": "^1.19.0",
     "openzeppelin-test-helpers": "^0.4.3",
     "solhint": "2.1.0",
-    "solidity-coverage": "^0.7.0-beta.0",
+    "solidity-coverage": "git+https://github.com/sc-forks/solidity-coverage.git#715f019513743e63ab2f594c5a7a039d66b9f615",
     "solidity-docgen": "^0.3.0-beta.4",
     "truffle": "^5.0.34"
   }
