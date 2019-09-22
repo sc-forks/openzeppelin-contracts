@@ -5,7 +5,7 @@ const { utils: { toBN } } = require('web3');
 
 const GSNBouncerSignatureMock = artifacts.require('GSNBouncerSignatureMock');
 
-contract.skip('GSNBouncerSignature', function ([_, signer, other]) {
+contract('GSNBouncerSignature', function ([_, signer, other]) {
   beforeEach(async function () {
     this.recipient = await GSNBouncerSignatureMock.new(signer);
   });

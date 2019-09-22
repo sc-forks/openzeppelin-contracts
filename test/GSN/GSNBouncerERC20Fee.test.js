@@ -7,7 +7,7 @@ const GSNBouncerERC20FeeMock = artifacts.require('GSNBouncerERC20FeeMock');
 const ERC20Detailed = artifacts.require('ERC20Detailed');
 const IRelayHub = artifacts.require('IRelayHub');
 
-contract.skip('GSNBouncerERC20Fee', function ([_, sender, other]) {
+contract('GSNBouncerERC20Fee', function ([_, sender, other]) {
   const name = 'FeeToken';
   const symbol = 'FTKN';
   const decimals = new BN('18');
